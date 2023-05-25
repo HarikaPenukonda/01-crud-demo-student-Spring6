@@ -13,7 +13,7 @@ public class CruddemoApplication {
 	}
 
 	@Bean
-	public CommandLineRunner commandLineRunner(){
+	public CommandLineRunner commandLineRunner(String[] args){
 		// The CommandLineRunner is from the Spring Boot Framework, Executed after the Spring Beans have been loaded
 		// Java Lambda Expression
 		return runner -> {
