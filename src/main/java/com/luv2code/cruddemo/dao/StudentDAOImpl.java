@@ -37,7 +37,21 @@ public class StudentDAOImpl implements StudentDAO{
     public List<Student> findAll() {
         // create query
         //TypedQuery<Student> theQuery = entityManager.createQuery("FROM Student", Student.class);
-        TypedQuery<Student> theQuery = entityManager.createQuery("FROM Student order by lastName desc ", Student.class); // Default: sort ascending
+        TypedQuery<Student> theQuery = entityManager.createQuery("FROM Student", Student.class); // Default: sort ascending
+
+        // return query results
+        return theQuery.getResultList();
+    }
+
+    @Override
+    public List<Student> findByLastName(String theLastName) {
+
+        // create a query
+        // JPQL Named parameters are prefixed with a colon :, Think of this as placeholder that is filled in later
+        TypedQuery<Student> theQuery = entityManager.createQuery("FROM Student where lastName=:theData", Student.class);
+
+        // set query parameters
+        theQuery.setParameter("theData",theLastName);
 
         // return query results
         return theQuery.getResultList();
