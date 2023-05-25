@@ -21,8 +21,32 @@ public class CruddemoApplication {
 		// Java Lambda Expression
 		return runner -> {
 			//createStudent(studentDAO);
-			createMultipleStudents(studentDAO);
+			//createMultipleStudents(studentDAO);
+			readStudent(studentDAO);
 		};
+
+	}
+
+	private void readStudent(StudentDAO studentDAO) {
+
+		// create a student object
+		System.out.println("Creating the Student ...");
+		Student tempStudent = new Student("Nick","Miller","millern1@luv2code.com");
+
+		// save the student
+		System.out.println("Saving the Student");
+		studentDAO.save(tempStudent);
+
+		// display id of the saved student
+		int theId = tempStudent.getId();
+		System.out.println("Saved Student... + Generating ID " + theId);
+
+		// retrieve  student based on the id: primary key
+		System.out.println("Retrieving the student with id: " +theId);
+		Student myStudent = studentDAO.findById(theId);
+
+		// display student
+		System.out.println("Found the student " + myStudent);
 
 	}
 
@@ -33,24 +57,26 @@ public class CruddemoApplication {
 		Student tempStudent1 = new Student("Betty","Cooper","cooperb1@luv2code.com");
 		Student tempStudent2 = new Student("Jughead","Jones","jonesj1@luv2code.com");
 		Student tempStudent3 = new Student("Veronica","Lodge","lodgev1@luv2code.com");
+		Student tempStudent = new Student("Archie","Andrews","andrewsa1@luv2code.com");
 		// save the student objects
 		System.out.println("Saving the Student");
+		studentDAO.save(tempStudent);
 		studentDAO.save(tempStudent1);
 		studentDAO.save(tempStudent2);
 		studentDAO.save(tempStudent3);
 	}
 
 
-//	private void createStudent(StudentDAO studentDAO) {
-//
-//		// create
-//		System.out.println("Creating the Student ...");
-//		Student tempStudent = new Student("Archie","Andrews","andrewsa1@luv2code.com");
-//		// save
-//		System.out.println("Saving the Student");
-//		studentDAO.save(tempStudent);
-//		// display
-//		System.out.println("Saved Student.. Generating ID" + tempStudent.getId());
-//	}
+	private void createStudent(StudentDAO studentDAO) {
+
+		// create
+		System.out.println("Creating the Student ...");
+		Student tempStudent = new Student("Archie","Andrews","andrewsa1@luv2code.com");
+		// save
+		System.out.println("Saving the Student");
+		studentDAO.save(tempStudent);
+		// display
+		System.out.println("Saved Student.. Generating ID" + tempStudent.getId());
+	}
 
 }
