@@ -23,13 +23,27 @@ public class CruddemoApplication {
 		// Java Lambda Expression
 		return runner -> {
 			//createStudent(studentDAO);
+
 			//createMultipleStudents(studentDAO);
+
 			//readStudent(studentDAO);
+
 			//queryForStudent(studentDAO);
+
 			//queryForStudentsByLastName(studentDAO);
-			updateStudent(studentDAO);
+
+			//updateStudent(studentDAO);
+
+			deleteStudent(studentDAO);
 		};
 
+	}
+
+	private void deleteStudent(StudentDAO studentDAO) {
+
+		int studentId = 6;
+		System.out.println("Deleting Student with id: " + studentId);
+		studentDAO.delete(studentId);
 	}
 
 	private void updateStudent(StudentDAO studentDAO) {
